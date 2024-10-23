@@ -16,7 +16,7 @@ Query to find who are the logged in users in the system
 
 ### Query:
 ```sql
-select * from logged_in_users ;
+select * from logged_in_users;
 ```
 &nbsp;
 ## 2. Previous Logged Users 
@@ -24,7 +24,7 @@ Previous logins
 
 ### Query:
 ```sql
-select * from last ;
+select * from last;
 ```
 &nbsp;
 ## 3. Previous Logged Users 
@@ -56,7 +56,7 @@ Find all the running svchost.exe processes.
 
 ### Query
 ```sql
-SELECT * FROM processes WHERE name = "svchost.exe" 
+SELECT * FROM processes WHERE name = "svchost.exe";
 ```
 
 ---
@@ -88,9 +88,7 @@ The two WHERE clauses help filter down results
 
 ### Query
 ```sql
-SELECT uid,username,shell,directory FROM users
- WHERE type = ‘local’; → Windows Domain Joined systems
- WHERE shell NOT LIKE ‘%/bin/false’; 
+SELECT uid,username,shell,directory FROM users WHERE type = 'local'; → Windows Domain Joined systems WHERE shell NOT LIKE '%/bin/false'; 
 ```
 &nbsp;
 ## 10. Create Account - T1136
@@ -102,9 +100,7 @@ Ubuntu Linux [sudo, root] =27,0
 
 ### Query
 ```sql
-SELECT users.uid,users.username,users.shell FROM user_groups
- INNER JOIN users ON user_groups.uid = users.uid
- WHERE user_groups.gid = @groupid;
+SELECT users.uid,users.username,users.shell FROM user_groups INNER JOIN users ON user_groups.uid = users.uid WHERE user_groups.gid = @groupid;
 ```
 &nbsp;
 ## 11. New Service - T1050
@@ -114,9 +110,7 @@ legit svchost services.
 
 ### Query
 ```sql
-SELECT name,display_name,user_account,path FROM services
- WHERE start_type = ‘AUTO_START’
- AND path NOT LIKE ‘C:\Windows\system32\svchost.exe -k %’;
+SELECT name,display_name,user_account,path FROM services WHERE start_type = 'AUTO_START' AND path NOT LIKE 'C:\Windows\system32\svchost.exe -k %';
 ```
 &nbsp;
 ## 12. New Service - T1050
@@ -126,8 +120,7 @@ legit svchost services.
 
 ### Query
 ```sql
-SELECT hidden,name,action
- FROM scheduled_tasks WHERE enabled = 1;
+SELECT hidden,name,action FROM scheduled_tasks WHERE enabled = 1;
 ```
 &nbsp;
 ## 13. User Login/Startup Items - T1165
@@ -137,8 +130,7 @@ Windows = desktop.ini for each user profile
 
 ### Query
 ```sql
-SELECT name,path,source,status,username
- FROM startup_items;
+SELECT name,path,source,status,username FROM startup_items;
 ```
 &nbsp;
 ## 14. Browser Extensions - T1176
@@ -148,9 +140,7 @@ Useful to filter for all extensions for a particular user
 
 ### Query
 ```sql
-SELECT users.username,chrome_extensions.name,
- chrome_extensions.identifier,chrome_extensions.path
- FROM users CROSS JOIN chrome_extensions USING (uid);
+SELECT users.username,chrome_extensions.name, chrome_extensions.identifier,chrome_extensions.path FROM users CROSS JOIN chrome_extensions USING (uid);
 ```
 &nbsp;
 ## 15. Browser Extensions - T1176
@@ -160,9 +150,7 @@ good identifier/s
 
 ### Query
 ```sql
-SELECT users.username,chrome_extensions.name FROM users
-CROSS JOIN chrome_extensions USING (uid) WHERE name LIKE
-‘%lastpass%’ AND identifier <> ‘hdokiejnpimakedhajhdlcegeplioahd’;
+SELECT users.username,chrome_extensions.name FROM users CROSS JOIN chrome_extensions USING (uid) WHERE name LIKE '%lastpass%' AND identifier <> 'hdokiejnpimakedhajhdlcegeplioahd';
 ```
 &nbsp;
 ## 16. Application Shimming - T1138
@@ -171,6 +159,5 @@ Web searching the SDB ID can provide lots of c
 
 ### Query
 ```sql
-SELECT executable,path,description,sdb_id
- FROM appcompat_shims;
+SELECT executable,path,description,sdb_id FROM appcompat_shims;
 ``` 
