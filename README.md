@@ -9,6 +9,7 @@ Welcome to the Endpoint Detection and Response (EDR) Lab at RACE, REVA Universit
 1. **Download and Install Osquery**:
    - [Osquery Download Link](https://pkg.osquery.io/windows/osquery-5.13.1.msi)
    - Follow the installation instructions.
+   - Cheatsheet - [Osquery.md](https://github.com/shamanthss/EDR-RACE/blob/main/Osquery.md)
 
 2. **Install Sysmon**:
    - Download Sysmon from the [Sysinternals Suite](https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon).
