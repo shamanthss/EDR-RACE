@@ -3,7 +3,7 @@
 https://pkg.osquery.io/windows/osquery-5.13.1.msi
 ```
 &nbsp;
-# Invoke Osquery
+# Invoke Osquery - Using Powershell
 
 ```sh
 & 'C:\Program Files\osquery\osqueryi.exe'
